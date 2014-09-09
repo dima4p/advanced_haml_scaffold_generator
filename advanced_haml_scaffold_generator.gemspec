@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "advanced_haml_scaffold_generator.gemspec",
-    "lib/advanced_haml_scaffold_generator.rb",
     "lib/rails/generators/haml/base.rb",
     "lib/rails/generators/haml/scaffold/scaffold_generator.rb",
     "lib/rails/generators/haml/scaffold/templates/_form.html.haml",
