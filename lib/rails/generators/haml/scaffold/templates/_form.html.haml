@@ -1,0 +1,31 @@
+<% if Gem::Specification.map(&:name).include?('simple_form') -%>
+= simple_form_for(@<%= singular_table_name %>) do |f|
+  = f.error_notification
+
+  .form-inputs
+  <%- attributes.each do |attribute| -%>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+  <%- end -%>
+
+  .form-actions
+    = f.button :submit
+<% else -%>
+= form_for(@<%= singular_table_name %>) do |f|
+  - if @<%= singular_table_name %>.errors.any?
+    #error_explanation
+      %h2
+        = t 'errors.template.header', model: t('.<%= singular_table_name %>'), count: @<%= singular_table_name %>.errors.count
+      %ul
+        - @<%= singular_table_name %>.errors.full_messages.each do |msg|
+          %li= msg
+
+<% for attribute in attributes -%>
+  .field
+    = f.label :<%= attribute.name %>
+    %br
+    = f.<%= attribute.field_type %> :<%= attribute.name %>
+<% end -%>
+
+  .actions
+    = f.submit
+<% end -%>

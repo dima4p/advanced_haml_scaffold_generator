@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "advanced_haml_scaffold_generator"
   gem.homepage = "http://github.com/dima4p/advanced_haml_scaffold_generator"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Extention of the haml generator that is aware of i18n and so forth}
+  gem.description = %Q{Extention of the haml generator that generates templates with the use of i18n, cancan and WiceGrid, adds classes to buttons and uses :title helper}
   gem.email = "dima@koulikoff.ru"
-  gem.authors = ["Dmitri Koulikoff (acer)"]
+  gem.authors = ["Dmitri Koulikoff"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

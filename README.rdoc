@@ -1,6 +1,27 @@
 = advanced_haml_scaffold_generator
 
-Description goes here.
+This is the rails generator of scaffold that generates haml views that
+* explore I18n
+* use gem cancan (cancancan) if it is set in the setup
+* use WiceGrid in index if it is used
+* use helper :title
+
+== Installation
+
+Add to your Gemfile
+
+  gem 'advanced_haml_scaffold_generator'
+
+Then bundle as usual.
+
+== Usage
+
+Next time you run
+
+  rails generate scaffold SomeModel
+
+you will get the appropriate views. You can also add an option <code>--layout</code> to get the layout file in app/views/layout
+
 
 == Contributing to advanced_haml_scaffold_generator
  
@@ -14,6 +35,6 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2014 Dmitri Koulikoff (acer). See LICENSE.txt for
+Copyright (c) 2014 Dmitri Koulikoff. See LICENSE.txt for
 further details.
 

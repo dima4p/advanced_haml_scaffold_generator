@@ -1,0 +1,22 @@
+- title t('.title')
+
+%p.nav
+<% if options[:cancan] -%>
+  - if can? :index, <%= class_name %>
+    = link_to t('back'), <%= index_helper %>_path, class: 'index'
+  - if can? :edit, @<%= singular_table_name %>
+    = link_to t('edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'edit'
+<% else -%>
+  = link_to t('back'), <%= plural_name %>_path, class: 'index'
+  = link_to t('edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'edit'
+<% end -%>
+
+%dl
+<% for attribute in attributes -%>
+  %dt= <%= class_name %>.human_attribute_name :<%= attribute.name %>
+<% if attribute.reference? -%>
+  %dd= @<%= singular_table_name %>.<%= attribute.name %>.try :name
+<% else -%>
+  %dd= @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+<% end -%>

@@ -1,0 +1,10 @@
+- title t('.title')
+
+<% if options[:cancan] -%>
+- if can? :index, <%= class_name %>
+  %p.nav= link_to t('back'), <%= index_helper %>_path, class: 'index'
+<% else -%>
+%p= link_to t('back'), <%= index_helper %>_path, class: 'index'
+<% end -%>
+
+= render 'form'
