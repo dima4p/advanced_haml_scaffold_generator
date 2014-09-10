@@ -18,7 +18,7 @@ Then bundle as usual.
 
 Next time you run
 
-  rails generate scaffold SomeModel
+  rails generate scaffold SomeModel ...
 
 you will get the appropriate views. You can also add an option <code>--layout</code> to get the layout file in app/views/layout
 
