@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Dmitri Koulikoff"]
-  s.date = "2014-09-09"
+  s.date = "2014-09-12"
   s.description = "Extention of the haml generator that generates templates with the use of i18n, cancan and WiceGrid, adds classes to buttons and uses :title helper"
   s.email = "dima@koulikoff.ru"
   s.extra_rdoc_files = [
