@@ -12,7 +12,7 @@
 <% end -%>
 
 %dl
-<% for attribute in attributes -%>
+<% for attribute in attributes.reject(&:password_digest?) -%>
   %dt= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% if attribute.reference? -%>
   %dd= @<%= singular_table_name %>.<%= attribute.name %>.try :name

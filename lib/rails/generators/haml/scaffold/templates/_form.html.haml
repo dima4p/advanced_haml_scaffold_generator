@@ -4,7 +4,10 @@
 
   .form-inputs
   <%- attributes.each do |attribute| -%>
-    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.column_name %>
+<% if attribute.password_digest? -%>
+    = f.input :password_confirmation
+<% end -%>
   <%- end -%>
 
   .form-actions
@@ -21,9 +24,19 @@
 
 <% for attribute in attributes -%>
   .field
-    = f.label :<%= attribute.name %>
+<% if attribute.password_digest? -%>
+    = f.label :password
     %br
-    = f.<%= attribute.field_type %> :<%= attribute.name %>
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation
+<% else -%>
+    = f.label :<%= attribute.column_name %>
+    %br
+    = f.<%= attribute.field_type %> :<%= attribute.column_name %>
+<% end -%>
 <% end -%>
 
   .actions
