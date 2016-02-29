@@ -17,7 +17,7 @@
   - if @<%= singular_table_name %>.errors.any?
     #error_explanation
       %h2
-        = t 'errors.template.header', model: t('.<%= singular_table_name %>'), count: @<%= singular_table_name %>.errors.count
+        = t 'errors.template.header', model: t('.<%= singular_name %>'), count: @<%= singular_name %>.errors.count
       %ul
         - @<%= singular_table_name %>.errors.full_messages.each do |msg|
           %li= msg
