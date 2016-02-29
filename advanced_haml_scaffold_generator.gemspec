@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "lib/rails/generators/haml/base.rb",
     "lib/rails/generators/haml/scaffold/scaffold_generator.rb",
     "lib/rails/generators/haml/scaffold/templates/_form.html.haml",
+    "lib/rails/generators/haml/scaffold/templates/destroy.js.coffee",
     "lib/rails/generators/haml/scaffold/templates/edit.html.haml",
     "lib/rails/generators/haml/scaffold/templates/index.html.haml",
     "lib/rails/generators/haml/scaffold/templates/layout.html.haml",
