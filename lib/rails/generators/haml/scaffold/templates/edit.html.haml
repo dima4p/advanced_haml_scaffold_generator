@@ -10,4 +10,5 @@
   = link_to t('back'), <%= plural_name %>_path, class: 'index'
   = link_to t('show'), @<%= singular_name %>, class: 'show'
 <% end -%>
-= render 'form'
+
+= render 'form', <%= singular_table_name %>: @<%= singular_table_name %>
