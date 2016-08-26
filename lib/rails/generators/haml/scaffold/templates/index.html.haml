@@ -14,11 +14,11 @@
 <% for attribute in attributes.reject(&:password_digest?) -%>
 <% if attribute.reference? -%>
       - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
-        :attribute => '<%= attribute.name %>_id' do |<%= singular_table_name %>|
+        attribute: '<%= attribute.name %>_id' do |<%= singular_table_name %>|
         - <%= singular_table_name %>.<%= attribute.name %>.try :name
 <% else -%>
       - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
-        :attribute => '<%= attribute.name %>' do |<%= singular_table_name %>|
+        attribute: '<%= attribute.name %>' do |<%= singular_table_name %>|
         - <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 <% end -%>
@@ -51,11 +51,11 @@
 <% for attribute in attributes.reject(&:password_digest?) -%>
           %th= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% end -%>
-          %th{:colspan => 3}= t 'actions'
+          %th{colspan: 3}= t 'actions'
 
       %tbody
         - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-          %tr{ :class => cycle(:odd, :even) }
+          %tr{class: cycle(:odd, :even)}
 <% for attribute in attributes.reject(&:password_digest?) -%>
 <% if attribute.reference? -%>
             %td= <%= singular_table_name %>.<%= attribute.name %>.try :name
@@ -79,7 +79,7 @@
             %td.action= link_to t('show'), <%= singular_table_name %>, class: 'show'
             %td.action= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
             %td.action= link_to t('destroy'), <%= singular_table_name %>,
-              data: {confirm: t('.confirm', :default => 'Are you sure?')},
+              data: {confirm: t('.confirm', default: 'Are you sure?')},
               method: :delete, class: 'destroy'
 <% end -%>
 <% else -%>
@@ -89,11 +89,11 @@
 <% for attribute in attributes.reject(&:password_digest?) -%>
         %th= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% end -%>
-        %th{:colspan => 3}= t 'actions'
+        %th{colspan: 3}= t 'actions'
 
     %tbody
       - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-        %tr{ :class => cycle(:odd, :even) }
+        %tr{class: cycle(:odd, :even)}
 <% for attribute in attributes.reject(&:password_digest?) -%>
 <% if attribute.reference? -%>
           %td= <%= singular_table_name %>.<%= attribute.name %>.try :name
@@ -117,7 +117,7 @@
           %td.action= link_to t('show'), <%= singular_table_name %>, class: 'show'
           %td.action= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
           %td.action= link_to t('destroy'), <%= singular_table_name %>,
-            data: {confirm: t('.confirm', :default => 'Are you sure?')},
+            data: {confirm: t('.confirm', default: 'Are you sure?')},
             method: :delete, class: 'destroy'
 <% end -%>
 <% end -%>
