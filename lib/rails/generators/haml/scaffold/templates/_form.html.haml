@@ -4,9 +4,15 @@
 
   .form-inputs
   <%- attributes.each do |attribute| -%>
-    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.column_name %>
 <% if attribute.password_digest? -%>
+    = f.input :password
     = f.input :password_confirmation
+<% else -%>
+<% if attribute.reference? -%>
+    = f.association :<%= attribute.column_name.gsub(/_id$/, '') %>, prompt: t('.<%= attribute.column_name.gsub(/_id$/, '') %>', default: 'Choose')
+<% else -%>
+    = f.input :<%= attribute.column_name %>
+<% end -%>
 <% end -%>
   <%- end -%>
 
