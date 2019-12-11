@@ -14,11 +14,11 @@
 <% for attribute in attributes.reject(&:password_digest?) -%>
 <% if attribute.reference? -%>
       - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
-        attribute: '<%= attribute.name %>_id' do |<%= singular_table_name %>|
+        class: '<%= attribute.name %>', attribute: '<%= attribute.name %>_id' do |<%= singular_table_name %>|
         - <%= singular_table_name %>.<%= attribute.name %>.try :name
 <% else -%>
       - g.column name: <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
-        attribute: '<%= attribute.name %>' do |<%= singular_table_name %>|
+        class: '<%= attribute.name %>', attribute: '<%= attribute.name %>' do |<%= singular_table_name %>|
         - <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 <% end -%>
@@ -58,9 +58,9 @@
           %tr{class: cycle(:odd, :even)}
 <% for attribute in attributes.reject(&:password_digest?) -%>
 <% if attribute.reference? -%>
-            %td= <%= singular_table_name %>.<%= attribute.name %>.try :name
+            %td.<%= attribute.name %>= <%= singular_table_name %>.<%= attribute.name %>.try :name
 <% else -%>
-            %td= <%= singular_table_name %>.<%= attribute.name %>
+            %td.<%= attribute.name %>= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 <% end -%>
 <% if options[:cancan] -%>
