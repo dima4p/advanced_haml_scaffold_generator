@@ -6,6 +6,7 @@
 <% else -%>
 %p.nav= link_to t('.new_<%= singular_table_name %>'), new_<%= singular_table_name %>_path, class: 'new'
 <% end -%>
+<% turbo = defined? Turbo -%>
 
 - if @<%= plural_table_name %>.limit(1).size > 0
 <% if defined? Wice::WiceGrid -%>
@@ -31,18 +32,30 @@
           - link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
       - g.column do |<%= singular_table_name %>|
         - if can? :destroy, <%= singular_table_name %>
+<% if turbo -%>
+          - link_to t('destroy'), <%= singular_table_name %>, class: 'destroy',
+              data: {turbo_confirm: t('.confirm', default: 'Are you sure?'),
+                    turbo_method: :delete}
+<% else -%>
           - link_to t('destroy'), <%= singular_table_name %>,
-            data: {confirm: t('.confirm', default: 'Are you sure?')},
-            method: :delete, class: 'destroy'
+              data: {confirm: t('.confirm', default: 'Are you sure?')},
+              method: :delete, class: 'destroy'
+<% end -%>
 <% else -%>
       - g.column do |<%= singular_table_name %>|
         - link_to t('show'), <%= singular_table_name %>, class: 'show'
       - g.column do |<%= singular_table_name %>|
         - link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
       - g.column do |<%= singular_table_name %>|
+<% if turbo -%>
+        - link_to t('destroy'), <%= singular_table_name %>, class: 'destroy',
+            data: {turbo_confirm: t('.confirm', default: 'Are you sure?'),
+                  turbo_method: :delete}
+<% else -%>
         - link_to t('destroy'), <%= singular_table_name %>,
-          data: {confirm: t('.confirm', default: 'Are you sure?')},
-          method: :delete, class: 'destroy'
+            data: {confirm: t('.confirm', default: 'Are you sure?')},
+            method: :delete, class: 'destroy'
+<% end -%>
 <% end -%>
   -else
     %table
@@ -72,15 +85,27 @@
                 = link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
             %td.action
               - if can? :destroy, <%= singular_table_name %>
+<% if turbo -%>
+                = link_to t('destroy'), <%= singular_table_name %>, class: 'destroy',
+                    data: {turbo_confirm: t('.confirm', default: 'Are you sure?'),
+                          turbo_method: :delete}
+<% else -%>
                 = link_to t('destroy'), <%= singular_table_name %>,
-                  data: {confirm: t('.confirm', default: 'Are you sure?')},
-                  method: :delete, class: 'destroy'
+                    data: {confirm: t('.confirm', default: 'Are you sure?')},
+                    method: :delete, class: 'destroy'
+<% end -%>
 <% else -%>
             %td.action= link_to t('show'), <%= singular_table_name %>, class: 'show'
             %td.action= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
+<% if turbo -%>
+            %td.action= link_to t('destroy'), <%= singular_table_name %>, class: 'destroy',
+                data: {turbo_confirm: t('.confirm', default: 'Are you sure?'),
+                      turbo_method: :delete}
+<% else -%>
             %td.action= link_to t('destroy'), <%= singular_table_name %>,
-              data: {confirm: t('.confirm', default: 'Are you sure?')},
-              method: :delete, class: 'destroy'
+                data: {confirm: t('.confirm', default: 'Are you sure?')},
+                method: :delete, class: 'destroy'
+<% end -%>
 <% end -%>
 <% else -%>
   %table
@@ -110,15 +135,27 @@
               = link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
           %td.action
             - if can? :destroy, <%= singular_table_name %>
+<% if turbo -%>
+              = link_to t('destroy'), <%= singular_table_name %>, class: 'destroy',
+                  data: {turbo_confirm: t('.confirm', default: 'Are you sure?'),
+                        turbo_method: :delete}
+<% else -%>
               = link_to t('destroy'), <%= singular_table_name %>,
-                data: {confirm: t('.confirm', default: 'Are you sure?')},
-                method: :delete, class: 'destroy'
+                  data: {confirm: t('.confirm', default: 'Are you sure?')},
+                  method: :delete, class: 'destroy'
+<% end -%>
 <% else -%>
           %td.action= link_to t('show'), <%= singular_table_name %>, class: 'show'
           %td.action= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'edit'
+<% if turbo -%>
+          %td.action= link_to t('destroy'), <%= singular_table_name %>, class: 'destroy',
+              data: {turbo_confirm: t('.confirm', default: 'Are you sure?'),
+                    turbo_method: :delete}
+<% else -%>
           %td.action= link_to t('destroy'), <%= singular_table_name %>,
-            data: {confirm: t('.confirm', default: 'Are you sure?')},
-            method: :delete, class: 'destroy'
+              data: {confirm: t('.confirm', default: 'Are you sure?')},
+              method: :delete, class: 'destroy'
+<% end -%>
 <% end -%>
 <% end -%>
 - else
